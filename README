@@ -1,0 +1,16 @@
+various spline algorithms computed on the GPU
+
+HLSL shader which take parameters via texture maps and create spline meshes interpolating 3d positions with various algorithms.
+for usage with vvvv (vvvv.org)
+
+version 0.1:
+ribbon
+phong directional shading
+
+* linear interpolation
+* cosine interpolation
+* cubic interpolation
+* b-spline (third degree)
+* tcb-spline (hermite interpolation with tension continuity and bias control
+* bezier (cubic)
+* piecewise bezier (cubic)
