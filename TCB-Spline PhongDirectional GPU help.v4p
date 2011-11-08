@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta26.dtd" >
-   <PATCH nodename="D:\vvvv\sourceforge\SplinesGPU\TCB-Spline PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" systemname="Cubic-Spline PhongDirectional GPU help">
+   <PATCH nodename="D:\vvvv\SplinesGPU\TCB-Spline PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" systemname="Cubic-Spline PhongDirectional GPU help">
    <BOUNDS height="7920" left="0" top="6195" type="Window" width="9120">
    </BOUNDS>
    <NODE componentmode="InAWindow" id="3" nodename="Renderer (EX9)" systemname="Renderer (EX9)">
@@ -19,7 +19,7 @@
    </PIN>
    <PIN pinname="Aspect Ratio" visible="1">
    </PIN>
-   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="6">
+   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="NONE">
    </PIN>
    <PIN pinname="Background Color" slicecount="1" values="|0.66450,0.66450,0.66450,1.00000|">
    </PIN>
@@ -37,9 +37,9 @@
    </PIN>
    <PIN pinname="Enabled" pintype="Input" slicecount="1" visible="-1" values="1">
    </PIN>
-   <PIN pinname="Layer 3" visible="1" slicecount="1" values="||" encoded="0">
+   <PIN encoded="0" pinname="Layer 3" slicecount="1" visible="1" values="||">
    </PIN>
-   <PIN pinname="Layer 4" slicecount="1" visible="1" values="||" encoded="0">
+   <PIN encoded="0" pinname="Layer 4" slicecount="1" visible="1" values="||">
    </PIN>
    </NODE>
    <LINK dstnodeid="3" dstpinname="Layers" srcnodeid="2" srcpinname="Layer">
@@ -135,10 +135,10 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <PIN pinname="Input 1" slicecount="1" values="0.1">
+   <PIN pinname="Input 1" slicecount="1" values="0">
    </PIN>
    </NODE>
-   <NODE componentmode="Hidden" id="20" nodename="Quad (DX9)" systemname="Quad (DX9)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="20" nodename="Quad (DX9)" systemname="Quad (DX9)">
    <BOUNDS height="100" left="2580" top="5835" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Transform" visible="1">
@@ -289,7 +289,7 @@
    </PIN>
    <PIN pinname="Blue" visible="1">
    </PIN>
-   <PIN pinname="Alpha" visible="1" slicecount="1" values="0.04">
+   <PIN pinname="Alpha" slicecount="1" visible="1" values="0.04">
    </PIN>
    <PIN pinname="Apply" pintype="Input" slicecount="1" visible="-1" values="1">
    </PIN>
@@ -426,30 +426,30 @@
    </LINK>
    <LINK dstnodeid="76" dstpinname="Red" srcnodeid="7" srcpinname="Output">
    </LINK>
-   <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="91">
-   <BOUNDS type="Node" left="5070" top="1680" width="100" height="100">
+   <NODE componentmode="Hidden" id="91" nodename="LFO (Animation)" systemname="LFO (Animation)">
+   <BOUNDS height="100" left="5070" top="1680" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Cycles" visible="1">
    </PIN>
    <PIN pinname="Period" slicecount="1" values="0.66">
    </PIN>
    </NODE>
-   <LINK srcnodeid="91" srcpinname="Cycles" dstnodeid="80" dstpinname="Random Seed">
+   <LINK dstnodeid="80" dstpinname="Random Seed" srcnodeid="91" srcpinname="Cycles">
    </LINK>
-   <NODE systemname="Damper (Animation)" nodename="Damper (Animation)" componentmode="Hidden" id="92">
-   <BOUNDS type="Node" left="3225" top="3045" width="100" height="100">
+   <NODE componentmode="Hidden" id="92" nodename="Damper (Animation)" systemname="Damper (Animation)">
+   <BOUNDS height="100" left="3225" top="3045" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Go To Position" visible="1">
    </PIN>
    <PIN pinname="Position Out" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="92" dstpinname="Go To Position">
+   <LINK dstnodeid="92" dstpinname="Go To Position" srcnodeid="11" srcpinname="Output">
    </LINK>
-   <LINK srcnodeid="92" srcpinname="Position Out" dstnodeid="76" dstpinname="Green">
+   <LINK dstnodeid="76" dstpinname="Green" srcnodeid="92" srcpinname="Position Out">
    </LINK>
-   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="93">
-   <BOUNDS type="Node" left="6135" top="2220" width="100" height="100">
+   <NODE componentmode="Hidden" id="93" nodename="Multiply (Value)" systemname="Multiply (Value)">
+   <BOUNDS height="100" left="6135" top="2220" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" values="3">
    </PIN>
@@ -458,12 +458,12 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Input 1">
+   <LINK dstnodeid="93" dstpinname="Input 1" srcnodeid="8" srcpinname="Y Output Value">
    </LINK>
-   <LINK srcnodeid="93" srcpinname="Output" dstnodeid="80" dstpinname="Spread Count">
+   <LINK dstnodeid="80" dstpinname="Spread Count" srcnodeid="93" srcpinname="Output">
    </LINK>
-   <NODE systemname="Divide (Value)" nodename="Divide (Value)" componentmode="Hidden" id="94">
-   <BOUNDS type="Node" left="3975" top="2160" width="100" height="100">
+   <NODE componentmode="Hidden" id="94" nodename="Divide (Value)" systemname="Divide (Value)">
+   <BOUNDS height="100" left="3975" top="2160" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" values="4">
    </PIN>
@@ -472,24 +472,24 @@
    <PIN pinname="Input" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Frac (Value)" nodename="Frac (Value)" componentmode="Hidden" id="95">
-   <BOUNDS type="Node" left="3975" top="2445" width="100" height="100">
+   <NODE componentmode="Hidden" id="95" nodename="Frac (Value)" systemname="Frac (Value)">
+   <BOUNDS height="100" left="3975" top="2445" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
    <PIN pinname="Whole Part" visible="1">
    </PIN>
-   <PIN pinname="Real Part" visible="0" pintype="Output">
+   <PIN pinname="Real Part" pintype="Output" visible="0">
    </PIN>
    </NODE>
-   <LINK srcnodeid="94" srcpinname="Output" dstnodeid="95" dstpinname="Input">
+   <LINK dstnodeid="95" dstpinname="Input" srcnodeid="94" srcpinname="Output">
    </LINK>
-   <LINK srcnodeid="91" srcpinname="Cycles" dstnodeid="94" dstpinname="Input">
+   <LINK dstnodeid="94" dstpinname="Input" srcnodeid="91" srcpinname="Cycles">
    </LINK>
-   <LINK srcnodeid="95" srcpinname="Whole Part" dstnodeid="11" dstpinname="Random Seed">
+   <LINK dstnodeid="11" dstpinname="Random Seed" srcnodeid="95" srcpinname="Whole Part">
    </LINK>
-   <NODE systemname="Vector (3d Join)" nodename="Vector (3d Join)" componentmode="Hidden" id="96" hiddenwhenlocked="1">
-   <BOUNDS type="Node" left="2940" top="5175" width="100" height="100">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="96" nodename="Vector (3d Join)" systemname="Vector (3d Join)">
+   <BOUNDS height="100" left="2940" top="5175" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="X" visible="1">
    </PIN>
@@ -500,16 +500,16 @@
    <PIN pinname="Z" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="7" srcpinname="Output" dstnodeid="96" dstpinname="X" hiddenwhenlocked="1">
+   <LINK dstnodeid="96" dstpinname="X" hiddenwhenlocked="1" srcnodeid="7" srcpinname="Output">
    </LINK>
-   <LINK srcnodeid="92" srcpinname="Position Out" dstnodeid="96" dstpinname="Y" hiddenwhenlocked="1">
+   <LINK dstnodeid="96" dstpinname="Y" hiddenwhenlocked="1" srcnodeid="92" srcpinname="Position Out">
    </LINK>
-   <NODE componentmode="Hidden" id="21" nodename="Transform (Transform 3d Vector)" systemname="Transform (Transform 3d Vector)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="21" nodename="Transform (Transform 3d Vector)" systemname="Transform (Transform 3d Vector)">
    <BOUNDS height="100" left="2745" top="5490" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
-   <PIN pinname="Scale XYZ" visible="1" slicecount="1" values="0.015">
+   <PIN pinname="Scale XYZ" slicecount="1" visible="1" values="0.015">
    </PIN>
    <PIN pinname="TranslateX" visible="1">
    </PIN>
@@ -524,11 +524,11 @@
    <PIN pinname="Translate XYZ" visible="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="20" dstpinname="Transform" srcnodeid="21" srcpinname="Transform Out" hiddenwhenlocked="1">
+   <LINK dstnodeid="20" dstpinname="Transform" hiddenwhenlocked="1" srcnodeid="21" srcpinname="Transform Out">
    </LINK>
-   <LINK srcnodeid="96" srcpinname="XYZ" dstnodeid="21" dstpinname="Translate XYZ" hiddenwhenlocked="1">
+   <LINK dstnodeid="21" dstpinname="Translate XYZ" hiddenwhenlocked="1" srcnodeid="96" srcpinname="XYZ">
    </LINK>
-   <LINK srcnodeid="20" srcpinname="Layer" dstnodeid="2" dstpinname="Layer 2" hiddenwhenlocked="1">
+   <LINK dstnodeid="2" dstpinname="Layer 2" hiddenwhenlocked="1" srcnodeid="20" srcpinname="Layer">
    </LINK>
    <NODE componentmode="InABox" id="97" nodename="IOBox (String)" systemname="IOBox (String)">
    <BOUNDS height="270" left="885" top="2745" type="Node" width="1365">
@@ -544,8 +544,8 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
-   <NODE systemname="GaussianSpread (Spreads)" nodename="GaussianSpread (Spreads)" componentmode="Hidden" id="98">
-   <BOUNDS type="Node" left="3495" top="3525" width="100" height="100">
+   <NODE componentmode="Hidden" id="98" nodename="GaussianSpread (Spreads)" systemname="GaussianSpread (Spreads)">
+   <BOUNDS height="100" left="3495" top="3525" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Spread Count" visible="1">
    </PIN>
@@ -556,22 +556,22 @@
    <PIN pinname="Standard Deviation" slicecount="1" values="0.5">
    </PIN>
    </NODE>
-   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="98" dstpinname="Spread Count">
+   <LINK dstnodeid="98" dstpinname="Spread Count" srcnodeid="8" srcpinname="Y Output Value">
    </LINK>
-   <LINK srcnodeid="95" srcpinname="Whole Part" dstnodeid="98" dstpinname="Random Seed">
+   <LINK dstnodeid="98" dstpinname="Random Seed" srcnodeid="95" srcpinname="Whole Part">
    </LINK>
-   <NODE systemname="Damper (Animation)" nodename="Damper (Animation)" componentmode="Hidden" id="99">
-   <BOUNDS type="Node" left="3495" top="3840" width="100" height="100">
+   <NODE componentmode="Hidden" id="99" nodename="Damper (Animation)" systemname="Damper (Animation)">
+   <BOUNDS height="100" left="3495" top="3840" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Go To Position" visible="1">
    </PIN>
    <PIN pinname="Position Out" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="98" srcpinname="Output" dstnodeid="99" dstpinname="Go To Position">
+   <LINK dstnodeid="99" dstpinname="Go To Position" srcnodeid="98" srcpinname="Output">
    </LINK>
-   <LINK srcnodeid="99" srcpinname="Position Out" dstnodeid="76" dstpinname="Blue">
+   <LINK dstnodeid="76" dstpinname="Blue" srcnodeid="99" srcpinname="Position Out">
    </LINK>
-   <LINK srcnodeid="99" srcpinname="Position Out" dstnodeid="96" dstpinname="Z" hiddenwhenlocked="1">
+   <LINK dstnodeid="96" dstpinname="Z" hiddenwhenlocked="1" srcnodeid="99" srcpinname="Position Out">
    </LINK>
    </PATCH>
