@@ -36,8 +36,7 @@ sampler pSamp = sampler_state    //sampler for doing the texture-lookup
 	ADDRESSV = wrap;
 };
 
-bool rel <string uiname="relative Position";>;
-bool next <string uiname="relative to n/n+1";>;
+
 texture cTex <string uiname="Control Texture";>;
 sampler cSamp = sampler_state    //sampler for doing the texture-lookup
 {
@@ -61,14 +60,16 @@ struct vs2ps
 	float4 Depth : TEXCOORD6;
 };
 //---- Bezier-Spline -----------------------------------------------------------
+bool rel <string uiname="Relative Tangent";>;
+bool next <string uiname="Relative to n/n+1";>;
 struct pota { float4 Pos; float4 Tang; };
 pota BezierSplinePW(float4 p1, float4 t1, float4 p2, float4 t2, float range) {
 	pota Out = (pota)0;
 	
 	float mu = frac(range);
 		
-    float4 c1 = t1+(rel*p1);
-    float4 c2 = t2+(rel*lerp(p1,-p2,next));
+    float4 c1 = t1+(p1*rel);
+    float4 c2 = lerp(t2, lerp(p1+t2,p2-t2,next), rel);
   
     float mum1 = 1 - mu;
     float mum13 = mum1 * mum1 * mum1;

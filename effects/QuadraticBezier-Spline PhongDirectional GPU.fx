@@ -60,13 +60,14 @@ struct vs2ps
 
 
 //---- Bezier-Spline -----------------------------------------------------------
+bool rel <string uiname="Relative Tangent";> = true;
 struct pota { float4 Pos; float4 Tang; };
 pota QuadraticBezierSpline(float4 p1, float4 t, float4 p2, float range) {
 	pota Out = (pota)0;
 	
 	float mu = frac(range);
 		
-    float4 c = p1+t;
+    float4 c = t+(p1*rel);
   
     float mum = 1 - mu;
     float mum2 = mum * mum;
