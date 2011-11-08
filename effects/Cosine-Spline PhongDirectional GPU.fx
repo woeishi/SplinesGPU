@@ -67,7 +67,7 @@ pota CosineSpline(float4 p1, float4 p2, float range) {
 }
 // VERTEXSHADER-----------------------------------------------------------------
 float pitch;
-vs2ps VS_Spline(float4 PosO: POSITION, float4 TexCd : TEXCOORD0, float4 PosCd : TEXCOORD1)
+vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXCOORD0, float4 PosCd : TEXCOORD1)
 {
     vs2ps Out = (vs2ps)0;
     Out.LightDirV = normalize(-mul(lDir, tV));
@@ -82,9 +82,16 @@ vs2ps VS_Spline(float4 PosO: POSITION, float4 TexCd : TEXCOORD0, float4 PosCd : 
 	pota curve = CosineSpline(p1,p2,PosCd.x*cSize);
     float4 spline = curve.Pos;
 
-    float3 tang = normalize(curve.Tang);
-    float3 bitang= normalize(cross(tang,float3(0,sin(pitch),cos(pitch))));	
-    PosO.xyz=spline.xyz+(PosO.y*spline.w*bitang);
+	float3 rVec = 0;
+	sincos(pitch,rVec.y,rVec.z);
+	float3x3 tR = float3x3(float3(1,0,0), float3(0,rVec.z,-rVec.y), rVec);
+
+	float3 tang = normalize(curve.Tang);
+	float3 bitang= normalize(cross(tang,rVec));
+	float3x3 tBN = float3x3((float3)0,bitang,cross(tang,bitang));
+	PosO.xyz=spline.xyz+(mul(PosO.xyz,tBN)*spline.w);
+	
+	bitang = normalize(cross(tang,mul(NormO,tR)));
 	
     Out.PosWVP  = mul(PosO, tWVP);	
     Out.TexCd = mul(cCd, tTex);

@@ -78,7 +78,7 @@ pota BezierSpline(float4 p1, float4 t1, float4 p2, float4 t2, float range) {
 	return Out;
 }
 // VERTEXSHADER-----------------------------------------------------------------
-vs2ps VS_Spline(float4 PosO: POSITION, float4 TexCd : TEXCOORD0, float4 PosCd : TEXCOORD1)
+vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXCOORD0, float4 PosCd : TEXCOORD1)
 {
     vs2ps Out = (vs2ps)0;
     Out.LightDirV = normalize(-mul(lDir, tV));
@@ -92,12 +92,19 @@ vs2ps VS_Spline(float4 PosO: POSITION, float4 TexCd : TEXCOORD0, float4 PosCd : 
 	float4 p2 = tex2Dlod(pSamp, float4(cCd.x+(1./cSize),cCd.yzw));
 	float4 t2 = tex2Dlod(cSamp, float4(cCd.x+(1./cSize),cCd.yzw));
     
-	pota curve = BezierSpline(p1,t1,p2,t2,PosCd.x*cSize);
+	pota curve = BezierSpline(p1,float4(t1.xyz,0),p2,float4(t2.xyz,0),PosCd.x*cSize);
     float4 spline = curve.Pos;
 
-    float3 tang = normalize(curve.Tang);
-    float3 bitang= normalize(cross(tang,float3(0,sin(t1.w),cos(t1.w))));	
-    PosO.xyz=spline.xyz+(PosO.y*spline.w*bitang*2);
+	float3 rVec = 0;
+	sincos(t1.w,rVec.y,rVec.z);
+	float3x3 tR = float3x3(float3(1,0,0), float3(0,rVec.z,-rVec.y), rVec);
+
+	float3 tang = normalize(curve.Tang);
+	float3 bitang= normalize(cross(tang,rVec));
+	float3x3 tBN = float3x3((float3)0,bitang,cross(tang,bitang));
+	PosO.xyz=spline.xyz+(mul(PosO.xyz,tBN)*spline.w);
+	
+	bitang = normalize(cross(tang,mul(NormO,tR)));
 	
     Out.PosWVP  = mul(PosO, tWVP);
     Out.TexCd = mul(cCd, tTex);
