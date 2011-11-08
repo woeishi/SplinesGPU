@@ -132,7 +132,7 @@ float4 PS_Depth(vs2ps In): COLOR
     return col;
 }
 // TECHNIQUES-------------------------------------------------------------------
-technique BezierSpline_PhongDirectional
+technique QuadraticBezierSpline_PhongDirectional
 {
     pass P0
     {
@@ -140,7 +140,7 @@ technique BezierSpline_PhongDirectional
         PixelShader = compile ps_3_0 PS();
     }
 }
-technique BezierSpline_Depth
+technique QuadraticBezierSpline_Depth
 {
     pass P0
     {

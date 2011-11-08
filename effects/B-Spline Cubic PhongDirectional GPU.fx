@@ -124,7 +124,7 @@ technique BSplineCubic_PhongDirectional
     pass P0
     {
         VertexShader = compile vs_3_0 VS_Spline();
-        PixelShader = compile ps_2_0 PS();
+        PixelShader = compile ps_3_0 PS();
     }
 }
 technique CubicSpline_Depth
@@ -132,6 +132,6 @@ technique CubicSpline_Depth
     pass P0
     {
         VertexShader = compile vs_3_0 VS_Spline();
-        PixelShader = compile ps_2_0 PS_Depth();
+        PixelShader = compile ps_3_0 PS_Depth();
     }
 }
