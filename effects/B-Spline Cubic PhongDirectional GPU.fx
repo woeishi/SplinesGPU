@@ -125,7 +125,7 @@ technique BSplineCubic_PhongDirectional
         PixelShader = compile ps_3_0 PS();
     }
 }
-technique BSplineSpline_Depth
+technique BSplineSplineCubic_Depth
 {
     pass P0
     {
