@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta26.dtd" >
-   <PATCH nodename="D:\vvvv\sourceforge\SplinesGPU\Bezier-Spline Piecewise PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Bezier-Spline Piecewise PhongDirectional GPU help.v4p" systemname="Bezier-Spline Piecewise PhongDirectional GPU help">
+   <PATCH nodename="D:\vvvv\SplinesGPU\Bezier-Spline Piecewise PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Bezier-Spline Piecewise PhongDirectional GPU help.v4p" systemname="Bezier-Spline Piecewise PhongDirectional GPU help">
    <BOUNDS height="9405" left="0" top="6210" type="Window" width="9120">
    </BOUNDS>
    <NODE componentmode="InAWindow" id="3" nodename="Renderer (EX9)" systemname="Renderer (EX9)">
@@ -120,7 +120,7 @@
    </NODE>
    <LINK dstnodeid="11" dstpinname="Spread Count" srcnodeid="8" srcpinname="Y Output Value">
    </LINK>
-   <NODE componentmode="Hidden" id="20" nodename="Quad (DX9)" systemname="Quad (DX9)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="20" nodename="Quad (DX9)" systemname="Quad (DX9)">
    <BOUNDS height="100" left="1800" top="7380" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Transform" visible="1">
@@ -175,7 +175,7 @@
    </PIN>
    <PIN pinname="Render State" slicecount="1" visible="1" values="||">
    </PIN>
-   <PIN pinname="Technique" slicecount="1" values="| BezierSpline_Depth|">
+   <PIN pinname="Technique" slicecount="1" values="| BezierSplinePW_PhongDirectional|">
    </PIN>
    <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
@@ -336,7 +336,7 @@
    </NODE>
    <LINK dstnodeid="141" dstpinname="Red" srcnodeid="146" srcpinname="Output">
    </LINK>
-   <NODE componentmode="Hidden" id="147" nodename="Vector (3d Join)" systemname="Vector (3d Join)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="147" nodename="Vector (3d Join)" systemname="Vector (3d Join)">
    <BOUNDS height="100" left="2160" top="6495" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="X" visible="1">
@@ -346,9 +346,9 @@
    <PIN pinname="XYZ" visible="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="147" dstpinname="Y" srcnodeid="11" srcpinname="Output" hiddenwhenlocked="1">
+   <LINK dstnodeid="147" dstpinname="Y" hiddenwhenlocked="1" srcnodeid="11" srcpinname="Output">
    </LINK>
-   <NODE componentmode="Hidden" id="21" nodename="Transform (Transform 3d Vector)" systemname="Transform (Transform 3d Vector)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="21" nodename="Transform (Transform 3d Vector)" systemname="Transform (Transform 3d Vector)">
    <BOUNDS height="100" left="1965" top="7095" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
@@ -368,13 +368,13 @@
    <PIN pinname="Translate XYZ" visible="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="20" dstpinname="Transform" srcnodeid="21" srcpinname="Transform Out" hiddenwhenlocked="1">
+   <LINK dstnodeid="20" dstpinname="Transform" hiddenwhenlocked="1" srcnodeid="21" srcpinname="Transform Out">
    </LINK>
-   <LINK dstnodeid="21" dstpinname="Translate XYZ" srcnodeid="147" srcpinname="XYZ" hiddenwhenlocked="1">
+   <LINK dstnodeid="21" dstpinname="Translate XYZ" hiddenwhenlocked="1" srcnodeid="147" srcpinname="XYZ">
    </LINK>
    <LINK dstnodeid="2" dstpinname="Layer 2" srcnodeid="20" srcpinname="Layer">
    </LINK>
-   <NODE componentmode="Hidden" id="151" nodename="Quad (DX9)" systemname="Quad (DX9)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="151" nodename="Quad (DX9)" systemname="Quad (DX9)">
    <BOUNDS height="100" left="5355" top="7380" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Transform" visible="1">
@@ -388,7 +388,7 @@
    <PIN pinname="Color" slicecount="1" visible="1" values="|1.00000,0.32000,0.32000,1.00000|">
    </PIN>
    </NODE>
-   <NODE componentmode="Hidden" id="148" nodename="Transform (Transform 3d Vector)" systemname="Transform (Transform 3d Vector)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="148" nodename="Transform (Transform 3d Vector)" systemname="Transform (Transform 3d Vector)">
    <BOUNDS height="100" left="5520" top="7065" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
@@ -408,11 +408,11 @@
    <PIN pinname="Translate XYZ" visible="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="151" dstpinname="Transform" srcnodeid="148" srcpinname="Transform Out" hiddenwhenlocked="1">
+   <LINK dstnodeid="151" dstpinname="Transform" hiddenwhenlocked="1" srcnodeid="148" srcpinname="Transform Out">
    </LINK>
    <LINK dstnodeid="141" dstpinname="Green" srcnodeid="142" srcpinname="Output">
    </LINK>
-   <NODE componentmode="Hidden" id="154" nodename="Vector (3d Join)" systemname="Vector (3d Join)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="154" nodename="Vector (3d Join)" systemname="Vector (3d Join)">
    <BOUNDS height="100" left="5715" top="6750" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="X" visible="1">
@@ -422,11 +422,11 @@
    <PIN pinname="XYZ" visible="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="154" dstpinname="X" srcnodeid="146" srcpinname="Output" hiddenwhenlocked="1">
+   <LINK dstnodeid="154" dstpinname="X" hiddenwhenlocked="1" srcnodeid="146" srcpinname="Output">
    </LINK>
-   <LINK dstnodeid="154" dstpinname="Y" srcnodeid="142" srcpinname="Output" hiddenwhenlocked="1">
+   <LINK dstnodeid="154" dstpinname="Y" hiddenwhenlocked="1" srcnodeid="142" srcpinname="Output">
    </LINK>
-   <LINK dstnodeid="148" dstpinname="Translate XYZ" srcnodeid="154" srcpinname="XYZ" hiddenwhenlocked="1">
+   <LINK dstnodeid="148" dstpinname="Translate XYZ" hiddenwhenlocked="1" srcnodeid="154" srcpinname="XYZ">
    </LINK>
    <LINK dstnodeid="0" dstpinname="Aspect Width" srcnodeid="3" srcpinname="Actual Backbuffer Width">
    </LINK>
@@ -488,11 +488,11 @@
    </LINK>
    <LINK dstnodeid="136" dstpinname="Red" srcnodeid="163" srcpinname="X">
    </LINK>
-   <LINK dstnodeid="147" dstpinname="X" srcnodeid="163" srcpinname="X" hiddenwhenlocked="1">
+   <LINK dstnodeid="147" dstpinname="X" hiddenwhenlocked="1" srcnodeid="163" srcpinname="X">
    </LINK>
    <LINK dstnodeid="146" dstpinname="Input" srcnodeid="165" srcpinname="XY">
    </LINK>
-   <NODE componentmode="Hidden" id="166" nodename="I (Spreads)" systemname="I (Spreads)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="166" nodename="I (Spreads)" systemname="I (Spreads)">
    <BOUNDS height="100" left="4110" top="5595" type="Node" width="100">
    </BOUNDS>
    <PIN pinname=".. To [" visible="1">
@@ -502,9 +502,9 @@
    <PIN pinname="Phase" pintype="Input" slicecount="1" visible="-1" values="0">
    </PIN>
    </NODE>
-   <LINK dstnodeid="166" dstpinname=".. To [" srcnodeid="8" srcpinname="Y Output Value" hiddenwhenlocked="1">
+   <LINK dstnodeid="166" dstpinname=".. To [" hiddenwhenlocked="1" srcnodeid="8" srcpinname="Y Output Value">
    </LINK>
-   <NODE componentmode="Hidden" id="168" nodename="Select (Value)" systemname="Select (Value)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="168" nodename="Select (Value)" systemname="Select (Value)">
    <BOUNDS height="100" left="4110" top="5895" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
@@ -516,9 +516,9 @@
    <PIN pinname="Former Slice" pintype="Output" visible="-1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="168" dstpinname="Input" srcnodeid="166" srcpinname="Output" hiddenwhenlocked="1">
+   <LINK dstnodeid="168" dstpinname="Input" hiddenwhenlocked="1" srcnodeid="166" srcpinname="Output">
    </LINK>
-   <NODE componentmode="Hidden" id="169" nodename="CAR (Spreads)" systemname="CAR (Spreads)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="169" nodename="CAR (Spreads)" systemname="CAR (Spreads)">
    <BOUNDS height="100" left="4110" top="6195" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
@@ -528,9 +528,9 @@
    <PIN pinname="First Slice" pintype="Output" visible="0">
    </PIN>
    </NODE>
-   <LINK dstnodeid="169" dstpinname="Input" srcnodeid="168" srcpinname="Output" hiddenwhenlocked="1">
+   <LINK dstnodeid="169" dstpinname="Input" hiddenwhenlocked="1" srcnodeid="168" srcpinname="Output">
    </LINK>
-   <NODE componentmode="Hidden" id="171" nodename="CDR (Spreads)" systemname="CDR (Spreads)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="171" nodename="CDR (Spreads)" systemname="CDR (Spreads)">
    <BOUNDS height="100" left="4575" top="6510" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
@@ -540,9 +540,9 @@
    <PIN pinname="Last Slice" pintype="Output" visible="-1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="171" dstpinname="Input" srcnodeid="169" srcpinname="Remainder" hiddenwhenlocked="1">
+   <LINK dstnodeid="171" dstpinname="Input" hiddenwhenlocked="1" srcnodeid="169" srcpinname="Remainder">
    </LINK>
-   <NODE componentmode="Hidden" id="172" nodename="GetSlice (Spreads)" systemname="GetSlice (Spreads)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" hiddenwhenlocked="1" id="172" nodename="GetSlice (Spreads)" systemname="GetSlice (Spreads)">
    <BOUNDS height="100" left="3900" top="6825" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="Bin Size" pintype="Input" slicecount="1" visible="-1" values="3">
@@ -556,11 +556,11 @@
    <PIN pinname="Output Bins" pintype="Output" visible="-1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="172" dstpinname="Input" srcnodeid="147" srcpinname="XYZ" hiddenwhenlocked="1">
+   <LINK dstnodeid="172" dstpinname="Input" hiddenwhenlocked="1" srcnodeid="147" srcpinname="XYZ">
    </LINK>
-   <LINK dstnodeid="172" dstpinname="Index" srcnodeid="171" srcpinname="Remainder" hiddenwhenlocked="1">
+   <LINK dstnodeid="172" dstpinname="Index" hiddenwhenlocked="1" srcnodeid="171" srcpinname="Remainder">
    </LINK>
-   <NODE componentmode="Hidden" filename="%VVVV%\modules\vvvv group\EX9\Line (EX9).v4p" id="173" nodename="Line (EX9)" systemname="Line (EX9)" hiddenwhenlocked="1">
+   <NODE componentmode="Hidden" filename="%VVVV%\modules\vvvv group\EX9\Line (EX9).v4p" hiddenwhenlocked="1" id="173" nodename="Line (EX9)" systemname="Line (EX9)">
    <BOUNDS height="100" left="3570" top="7380" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="From" visible="1">
@@ -584,9 +584,9 @@
    <PIN pinname="PatternScale" pintype="Input" slicecount="1" visible="-1" values="1">
    </PIN>
    </NODE>
-   <LINK dstnodeid="173" dstpinname="From" srcnodeid="172" srcpinname="Output" hiddenwhenlocked="1">
+   <LINK dstnodeid="173" dstpinname="From" hiddenwhenlocked="1" srcnodeid="172" srcpinname="Output">
    </LINK>
-   <LINK dstnodeid="173" dstpinname="To" srcnodeid="154" srcpinname="XYZ" hiddenwhenlocked="1">
+   <LINK dstnodeid="173" dstpinname="To" hiddenwhenlocked="1" srcnodeid="154" srcpinname="XYZ">
    </LINK>
    <LINK dstnodeid="146" dstpinname="Count" srcnodeid="42" srcpinname="Output">
    </LINK>

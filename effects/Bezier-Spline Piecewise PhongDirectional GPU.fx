@@ -86,8 +86,7 @@ vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXC
 {
     vs2ps Out = (vs2ps)0;
     Out.LightDirV = normalize(-mul(lDir, tV));
-	
-	
+		
 	float cSize = (Size-1)*0.9999;
 	float4 cCd = PosCd;
 	cCd.x = floor(cCd.x*cSize)/(cSize);
@@ -113,13 +112,13 @@ vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXC
 	bitang = normalize(cross(tang,mul(NormO,tR)));
 	
     Out.PosWVP  = mul(PosO, tWVP);
-    Out.TexCd = mul(cCd, tTex);
+    Out.TexCd = mul(TexCd, tTex);
 
     //normal in view space
     Out.ViewDirV = -normalize(mul(PosO, tWV));
     Out.Tang = tang;
     Out.Bi = bitang;
-	Out.Depth = PosCd.x;//mul(PosO, tWVP);
+	Out.Depth = mul(PosO, tWVP);
     return Out;
 }
 // PIXELSHADER------------------------------------------------------------------

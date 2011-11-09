@@ -108,7 +108,7 @@ vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXC
 	bitang = normalize(cross(tang,mul(NormO,tR)));
 	
     Out.PosWVP  = mul(PosO, tWVP);
-    Out.TexCd = mul(cCd, tTex);
+    Out.TexCd = mul(TexCd, tTex);
 
     //normal in view space
     Out.ViewDirV = -normalize(mul(PosO, tWV));
