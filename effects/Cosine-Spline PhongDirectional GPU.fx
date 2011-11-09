@@ -1,5 +1,5 @@
 //@author: woei
-//@help: creates a cosine spline along 3d coordinates, calcualted on the GPU
+//@help: creates a cosine spline along 3d coordinates, calculated on the GPU
 //@tags: line, spline, cosine
 // PARAMETERS-------------------------------------------------------------------
 //transforms
@@ -16,8 +16,6 @@ sampler Samp = sampler_state    //sampler for doing the texture-lookup
     MipFilter = LINEAR;         //sampler states
     MinFilter = LINEAR;
     MagFilter = LINEAR;
-	AddressU = clamp;
-	AddressU = clamp;
 };
 
 float4x4 tTex: TEXTUREMATRIX <string uiname="Texture Transform";>;

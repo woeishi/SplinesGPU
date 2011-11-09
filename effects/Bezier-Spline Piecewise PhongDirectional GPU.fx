@@ -1,5 +1,5 @@
 //@author: woei
-//@help: creates a bezier ribbon along 3d coordinates, calcualted on the GPU
+//@help: creates a bezier ribbon along 3d coordinates, calculated on the GPU
 //@tags: curve, spline, bezier, piecewise
 // PARAMETERS-------------------------------------------------------------------
 //transforms
@@ -16,8 +16,6 @@ sampler Samp = sampler_state    //sampler for doing the texture-lookup
     MipFilter = LINEAR;         //sampler states
     MinFilter = LINEAR;
     MagFilter = LINEAR;
-	AddressU = clamp;
-	AddressU = clamp;
 };
 
 float4x4 tTex: TEXTUREMATRIX <string uiname="Texture Transform";>;
@@ -45,7 +43,7 @@ sampler cSamp = sampler_state    //sampler for doing the texture-lookup
     MinFilter = POINT;
     MagFilter = POINT;
 	AddressU = clamp;
-	ADDRESSV = clamp;
+	ADDRESSV = wrap;
 };
 
 struct vs2ps
@@ -146,7 +144,7 @@ technique BezierSplinePW_PhongDirectional
         PixelShader = compile ps_3_0 PS();
     }
 }
-technique BezierSpline_Depth
+technique BezierSplinePW_Depth
 {
     pass P0
     {

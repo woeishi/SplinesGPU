@@ -1,5 +1,5 @@
 //@author: woei
-//@help: creates a hermite spline ribbon along 3d coordinates, calcualted on the GPU
+//@help: creates a hermite spline ribbon along 3d coordinates, calculated on the GPU
 //@tags: curve, spline, hermite, nurbs
 // PARAMETERS-------------------------------------------------------------------
 //transforms
@@ -16,8 +16,6 @@ sampler Samp = sampler_state    //sampler for doing the texture-lookup
     MipFilter = LINEAR;         //sampler states
     MinFilter = LINEAR;
     MagFilter = LINEAR;
-	AddressU = clamp;
-	AddressU = clamp;
 };
 
 float4x4 tTex: TEXTUREMATRIX <string uiname="Texture Transform";>;
@@ -43,7 +41,7 @@ sampler cSamp = sampler_state    //sampler for doing the texture-lookup
     MinFilter = POINT;
     MagFilter = POINT;
 	AddressU = clamp;
-	ADDRESSV = clamp;
+	ADDRESSV = wrap;
 };
 
 struct vs2ps

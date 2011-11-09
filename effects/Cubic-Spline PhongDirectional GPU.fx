@@ -1,5 +1,5 @@
 //@author: woei
-//@help: creates a cubic spline ribbon along 3d coordinats, calcualted on the GPU
+//@help: creates a cubic spline ribbon along 3d coordinates, calculated on the GPU
 //@tags: curve, spline, cubic
 // PARAMETERS-------------------------------------------------------------------
 //transforms
@@ -16,8 +16,6 @@ sampler Samp = sampler_state    //sampler for doing the texture-lookup
     MipFilter = LINEAR;         //sampler states
     MinFilter = LINEAR;
     MagFilter = LINEAR;
-	AddressU = clamp;
-	AddressU = clamp;
 };
 
 float4x4 tTex: TEXTUREMATRIX <string uiname="Texture Transform";>;

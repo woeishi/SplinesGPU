@@ -1,5 +1,5 @@
 //@author: woei
-//@help: creates a bezierspline ribbon along 3d coordinats, calcualted on the GPU
+//@help: creates a bezierspline ribbon along 3d coordinates, calculated on the GPU
 //@tags: curve, spline, bezier, cubic bezier
 // PARAMETERS-------------------------------------------------------------------
 //transforms
@@ -16,8 +16,6 @@ sampler Samp = sampler_state    //sampler for doing the texture-lookup
     MipFilter = LINEAR;         //sampler states
     MinFilter = LINEAR;
     MagFilter = LINEAR;
-	AddressU = clamp;
-	AddressU = clamp;
 };
 
 float4x4 tTex: TEXTUREMATRIX <string uiname="Texture Transform";>;
@@ -43,7 +41,7 @@ sampler cSamp = sampler_state    //sampler for doing the texture-lookup
     MinFilter = POINT;
     MagFilter = POINT;
 	AddressU = clamp;
-	ADDRESSV = clamp;
+	ADDRESSV = wrap;
 };
 
 struct vs2ps
@@ -57,9 +55,7 @@ struct vs2ps
     float3 Bi : TEXCOORD5;
 	float4 Depth : TEXCOORD6;
 };
-
-
-//---- Bezier-Spline -----------------------------------------------------------
+ //---- Bezier-Spline -----------------------------------------------------------
 bool rel <string uiname="Relative Tangent";> = true;
 struct pota { float4 Pos; float4 Tang; };
 pota BezierSpline(float4 p1, float4 t1, float4 p2, float4 t2, float range) {
