@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta26.dtd" >
-   <PATCH nodename="D:\vvvv\sourceforge\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" systemname="Cubic-Spline PhongDirectional GPU help">
+   <PATCH nodename="D:\vvvv\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" systemname="Cubic-Spline PhongDirectional GPU help">
    <BOUNDS height="7875" left="0" top="6180" type="Window" width="9120">
    </BOUNDS>
    <NODE componentmode="InAWindow" id="3" nodename="Renderer (EX9)" systemname="Renderer (EX9)">
@@ -19,7 +19,7 @@
    </PIN>
    <PIN pinname="Aspect Ratio" visible="1">
    </PIN>
-   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="6">
+   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="4">
    </PIN>
    <PIN pinname="Background Color" slicecount="1" values="|0.10009,0.10009,0.10009,1.00000|">
    </PIN>
@@ -139,9 +139,9 @@
    <LINK dstnodeid="17" dstpinname="Mesh" srcnodeid="5" srcpinname="Mesh">
    </LINK>
    <NODE componentmode="InABox" id="58" nodename="IOBox (Value Advanced)" systemname="IOBox (Value Advanced)">
-   <BOUNDS height="0" left="225" top="3615" type="Node" width="0">
+   <BOUNDS height="0" left="600" top="3375" type="Node" width="0">
    </BOUNDS>
-   <BOUNDS height="240" left="225" top="3615" type="Box" width="510">
+   <BOUNDS height="240" left="600" top="3375" type="Box" width="510">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" values="1800">
    </PIN>
@@ -217,9 +217,9 @@
    </PIN>
    <PIN pinname="Attractor" visible="1">
    </PIN>
-   <PIN pinname="Attractor Strength" slicecount="1" visible="1" values="2">
+   <PIN pinname="Attractor Strength" slicecount="1" visible="1" values="1.5">
    </PIN>
-   <PIN pinname="Attractor Power" slicecount="1" visible="1" values="1.4">
+   <PIN pinname="Attractor Power" slicecount="1" visible="1" values="1.35">
    </PIN>
    <PIN pinname="Attractor Radius" slicecount="1" visible="1" values="0.4">
    </PIN>
@@ -227,7 +227,7 @@
    <LINK dstnodeid="73" dstpinname="Input" srcnodeid="72" srcpinname="XYZ">
    </LINK>
    <NODE componentmode="Hidden" id="74" nodename="Vector (3d Split)" systemname="Vector (3d Split)">
-   <BOUNDS height="100" left="3480" top="4065" type="Node" width="100">
+   <BOUNDS height="100" left="3480" top="4275" type="Node" width="100">
    </BOUNDS>
    <PIN pinname="XYZ" visible="1">
    </PIN>
@@ -299,7 +299,7 @@
    </BOUNDS>
    <BOUNDS height="240" left="4335" top="4305" type="Box" width="555">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0.0005">
+   <PIN pinname="Y Input Value" slicecount="1" values="0.0002">
    </PIN>
    <PIN encoded="0" pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -563,9 +563,9 @@
    </PIN>
    </NODE>
    <NODE componentmode="InABox" id="108" nodename="IOBox (String)" systemname="IOBox (String)">
-   <BOUNDS height="270" left="225" top="3270" type="Node" width="1365">
+   <BOUNDS height="270" left="600" top="3030" type="Node" width="1365">
    </BOUNDS>
-   <BOUNDS height="255" left="225" top="3270" type="Box" width="1290">
+   <BOUNDS height="255" left="600" top="3030" type="Box" width="1290">
    </BOUNDS>
    <PIN encoded="0" pinname="Input String" slicecount="1" visible="0" values="|Spline Resolution|">
    </PIN>

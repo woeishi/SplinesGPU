@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta26.dtd" >
-   <PATCH nodename="D:\vvvv\sourceforge\SplinesGPU\B-Spline Cubic PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" systemname="Cubic-Spline PhongDirectional GPU help">
+   <PATCH nodename="D:\vvvv\SplinesGPU\B-Spline Cubic PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Cubic-Spline PhongDirectional GPU help.v4p" systemname="Cubic-Spline PhongDirectional GPU help">
    <BOUNDS height="7920" left="0" top="6180" type="Window" width="9120">
    </BOUNDS>
    <NODE componentmode="InAWindow" id="3" nodename="Renderer (EX9)" systemname="Renderer (EX9)">
@@ -103,9 +103,9 @@
    </PIN>
    </NODE>
    <NODE componentmode="InABox" id="58" nodename="IOBox (Value Advanced)" systemname="IOBox (Value Advanced)">
-   <BOUNDS height="0" left="225" top="3615" type="Node" width="0">
+   <BOUNDS height="0" left="600" top="2685" type="Node" width="0">
    </BOUNDS>
-   <BOUNDS height="240" left="225" top="3615" type="Box" width="510">
+   <BOUNDS height="240" left="600" top="2685" type="Box" width="510">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" values="1800">
    </PIN>
@@ -523,9 +523,9 @@
    </PIN>
    </NODE>
    <NODE componentmode="InABox" id="108" nodename="IOBox (String)" systemname="IOBox (String)">
-   <BOUNDS height="270" left="225" top="3270" type="Node" width="1365">
+   <BOUNDS height="270" left="600" top="2340" type="Node" width="1365">
    </BOUNDS>
-   <BOUNDS height="255" left="225" top="3270" type="Box" width="1290">
+   <BOUNDS height="255" left="600" top="2340" type="Box" width="1290">
    </BOUNDS>
    <PIN encoded="0" pinname="Input String" slicecount="1" visible="0" values="|Spline Resolution|">
    </PIN>
