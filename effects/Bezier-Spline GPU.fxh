@@ -44,11 +44,11 @@ pota BezierSpline(float4 p1, float4 t1, float4 p2, float4 t2, float range) {
 	return Out;
 }
 // VERTEXSHADER-----------------------------------------------------------------
-float4 BezierSplineGPU(float4 PosO: POSITION, float3 NormO: NORMAL, float4 PosCd : TEXCOORD1, out float3 Tang, out float3 BiTang)
+float4 BezierSplineGPU(float4 PosO: POSITION, float3 NormO: NORMAL, float4 PosCd : TEXCOORD1, out float3 Tang, out float3 BiTang, out float cSize, out float4 cCd)
 {
 	
-	float cSize = (Size-1)*0.9999;
-	float4 cCd = PosCd;	
+	cSize = (Size-1)*0.9999;
+	cCd = PosCd;	
 	cCd.x = floor(cCd.x*(cSize))/cSize;
 	
     float4 p1 = tex2Dlod(pSamp, cCd);
