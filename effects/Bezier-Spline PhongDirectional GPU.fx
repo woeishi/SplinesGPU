@@ -20,6 +20,17 @@ sampler Samp = sampler_state    //sampler for doing the texture-lookup
 	AddressU = clamp;
 };
 
+texture ColorTex <string uiname="Color Texture";>;
+sampler ColorSamp = sampler_state
+{
+    Texture   = (ColorTex);
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+    AddressU = clamp;
+    ADDRESSV = wrap;
+};
+
 float4x4 tTex: TEXTUREMATRIX <string uiname="Texture Transform";>;
 float4x4 tColor <string uiname="Color Transform";>;
 float alpha = 1.;
@@ -44,25 +55,29 @@ vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXC
     
     float3 tang = 0;
     float3 bitang = 0;
+    float cSize = 0;
+    float4 cCd = 0;
     PosO = BezierSplineGPU(PosO, NormO, PosCd, tang, bitang);
-	
+
     Out.PosWVP  = mul(PosO, tWVP);
-    Out.TexCd = mul(TexCd, tTex);
+	Out.TexCd = mul (TexCd,tTex);
 
     //normal in view space
     Out.ViewDirV = -normalize(mul(PosO, tWV));
     Out.Tang = tang;
     Out.Bi = bitang;
 	Out.Depth = mul(PosO, tWVP);
+	Out.PosCd = PosCd;
     return Out;
 }
 // PIXELSHADER------------------------------------------------------------------
 float4 PS(vs2ps In): COLOR
 {
 	float4 col = tex2D(Samp, In.TexCd);
-    float3 n = normalize(cross(In.Tang,In.Bi));    
-    col.rgb *= PhongDirectional(n, In.ViewDirV, In.LightDirV);
-    col.a*=alpha;
+    float3 n = normalize(cross(In.Tang,In.Bi));
+	float4 textureColor = tex2D(ColorSamp, float4(In.TexCd.x, In.PosCd.yzw));
+    col.rgb *= PhongDirectional(n, In.ViewDirV, In.LightDirV) * textureColor.rgb;
+    col.a *= alpha * textureColor.a;
     return mul(col, tColor);
 }
 
@@ -72,6 +87,7 @@ float4 PS_Depth(vs2ps In): COLOR
     col.a =1;
     return col;
 }
+
 // TECHNIQUES-------------------------------------------------------------------
 technique BezierSpline_PhongDirectional
 {
@@ -81,6 +97,7 @@ technique BezierSpline_PhongDirectional
         PixelShader = compile ps_3_0 PS();
     }
 }
+
 technique BezierSpline_Depth
 {
     pass P0
