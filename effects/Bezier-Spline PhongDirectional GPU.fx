@@ -24,20 +24,9 @@ texture ColorTex <string uiname="Color Texture";>;
 sampler ColorSamp = sampler_state
 {
     Texture   = (ColorTex);
-    MipFilter = POINT;
-    MinFilter = POINT;
-    MagFilter = POINT;
-    AddressU = clamp;
-    ADDRESSV = wrap;
-};
-
-texture SecondColorTex <string uiname="Second Color Texture";>;
-sampler SecondColorSamp = sampler_state
-{
-    Texture   = (SecondColorTex);
-    MipFilter = POINT;
-    MinFilter = POINT;
-    MagFilter = POINT;
+    MipFilter = LINEAR;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
     AddressU = clamp;
     ADDRESSV = wrap;
 };
@@ -57,9 +46,6 @@ struct vs2ps
     float3 Tang : TEXCOORD4;
     float3 Bi : TEXCOORD5;
 	float4 Depth : TEXCOORD6;
-    float4 Color : COLOR0;
-    float4 SecondColor : COLOR1;
-    float U : TEXCOORD7;
 };
 // VERTEXSHADER-----------------------------------------------------------------
 vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXCOORD0, float4 PosCd : TEXCOORD1)
@@ -71,29 +57,27 @@ vs2ps VS_Spline(float4 PosO: POSITION, float3 NormO: NORMAL, float4 TexCd : TEXC
     float3 bitang = 0;
     float cSize = 0;
     float4 cCd = 0;
-    PosO = BezierSplineGPU(PosO, NormO, PosCd, tang, bitang, cSize, cCd);
-	
-    Out.U = PosCd.x * cSize / (Size - 1);
-    Out.Color = tex2Dlod(ColorSamp, cCd);
-    Out.SecondColor = tex2Dlod(SecondColorSamp, cCd);
+    PosO = BezierSplineGPU(PosO, NormO, PosCd, tang, bitang);
 
     Out.PosWVP  = mul(PosO, tWVP);
-    Out.TexCd = mul(TexCd, tTex);
+	Out.TexCd = mul (TexCd,tTex);
 
     //normal in view space
     Out.ViewDirV = -normalize(mul(PosO, tWV));
     Out.Tang = tang;
     Out.Bi = bitang;
 	Out.Depth = mul(PosO, tWVP);
+	Out.PosCd = PosCd;
     return Out;
 }
 // PIXELSHADER------------------------------------------------------------------
 float4 PS(vs2ps In): COLOR
 {
 	float4 col = tex2D(Samp, In.TexCd);
-    float3 n = normalize(cross(In.Tang,In.Bi));    
-    col.rgb *= PhongDirectional(n, In.ViewDirV, In.LightDirV);
-    col.a*=alpha;
+    float3 n = normalize(cross(In.Tang,In.Bi));
+	float4 textureColor = tex2D(ColorSamp, float4(In.TexCd.x, In.PosCd.yzw));
+    col.rgb *= PhongDirectional(n, In.ViewDirV, In.LightDirV) * textureColor.rgb;
+    col.a *= alpha * textureColor.a;
     return mul(col, tColor);
 }
 
@@ -102,26 +86,6 @@ float4 PS_Depth(vs2ps In): COLOR
     float4 col = In.Depth.z;
     col.a =1;
     return col;
-}
-
-float4 PS_Color_From_Texture(vs2ps In): COLOR
-{
-    float4 col = tex2D(Samp, In.TexCd);
-    float4 textureColor = In.Color;
-    float3 n = normalize(cross(In.Tang,In.Bi));    
-    col.rgb *= PhongDirectional(n, In.ViewDirV, In.LightDirV) * textureColor.rgb;
-    col.a *= textureColor.a * alpha;
-    return mul(col, tColor);
-}
-
-float4 PS_Gradient_From_Two_Color_Textures(vs2ps In): COLOR
-{   
-    float4 col = tex2D(Samp, In.TexCd);
-    float4 textureColor = lerp(In.Color, In.SecondColor, In.U);
-    float3 n = normalize(cross(In.Tang,In.Bi));    
-    col.rgb *= PhongDirectional(n, In.ViewDirV, In.LightDirV) * textureColor.rgb;
-    col.a *= textureColor.a * alpha;
-    return mul(col, tColor);
 }
 
 // TECHNIQUES-------------------------------------------------------------------
@@ -140,23 +104,5 @@ technique BezierSpline_Depth
     {
         VertexShader = compile vs_3_0 VS_Spline();
         PixelShader = compile ps_3_0 PS_Depth();
-    }
-}
-
-technique Color_From_Texture
-{
-    pass P0
-    {
-        VertexShader = compile vs_3_0 VS_Spline();
-        PixelShader = compile ps_3_0 PS_Color_From_Texture();
-    }
-}
-
-technique Gradient_From_Two_Color_Textures
-{
-    pass P0
-    {
-        VertexShader = compile vs_3_0 VS_Spline();
-        PixelShader = compile ps_3_0 PS_Gradient_From_Two_Color_Textures();
     }
 }

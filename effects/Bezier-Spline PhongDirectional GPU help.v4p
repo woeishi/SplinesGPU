@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta29.2.dtd" >
    <PATCH nodename="C:\Users\smakhtin\Documents\GitRepos\SplinesGPU\effects\Bezier-Spline PhongDirectional GPU help.v4p" filename="D:\vvvv\sourceforge\SplinesGPU\Bezier-Spline PhongDirectional GPU help.v4p" systemname="Bezier-Spline PhongDirectional GPU help">
-   <BOUNDS height="10530" left="9195" top="3075" type="Window" width="15195">
+   <BOUNDS height="10530" left="9195" top="3075" type="Window" width="15300">
    </BOUNDS>
    <NODE componentmode="InAWindow" id="3" nodename="Renderer (EX9)" systemname="RENDERER (EX9)">
    <BOUNDS height="100" left="15" top="9870" type="Node" width="100">
@@ -89,7 +89,7 @@
    </BOUNDS>
    <BOUNDS height="240" left="2190" top="1290" type="Box" width="345">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="9">
+   <PIN pinname="Y Input Value" slicecount="1" values="3">
    </PIN>
    <PIN encoded="0" pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -119,19 +119,19 @@
    </PIN>
    <PIN pinname="alpha" slicecount="1" values="1">
    </PIN>
-   <PIN pinname="Ambient Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   <PIN pinname="Ambient Color" slicecount="1" values="|0.52456,0.52456,0.52456,1.00000|">
    </PIN>
-   <PIN pinname="Diffuse Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   <PIN pinname="Diffuse Color" slicecount="1" values="|0.38091,0.38091,0.38091,1.00000|">
    </PIN>
-   <PIN pinname="Specular Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   <PIN pinname="Specular Color" slicecount="1" values="|0.43837,0.43837,0.43837,1.00000|">
    </PIN>
    <PIN pinname="Render State" slicecount="1" visible="1" values="||">
    </PIN>
    <PIN pinname="Transform" slicecount="1" visible="1" values="||">
    </PIN>
-   <PIN pinname="Technique" slicecount="1" values="| Gradient_From_Two_Color_Textures|">
+   <PIN pinname="Technique" slicecount="1" values="| BezierSpline_PhongDirectional|">
    </PIN>
-   <PIN pinname="Color Texture" visible="1">
+   <PIN pinname="Color Texture" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Second Color Texture" visible="1">
    </PIN>
@@ -143,7 +143,7 @@
    </BOUNDS>
    <BOUNDS height="240" left="1500" top="1230" type="Box" width="345">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="18">
+   <PIN pinname="Y Input Value" slicecount="1" values="36">
    </PIN>
    <PIN encoded="0" pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -612,70 +612,6 @@
    </LINK>
    <LINK dstnodeid="5" dstpinname="Spline Count" srcnodeid="28" srcpinname="Y Output Value">
    </LINK>
-   <NODE systemname="DynamicTexture (EX9.Texture Color)" nodename="DynamicTexture (EX9.Texture Color)" componentmode="Hidden" id="77">
-   <BOUNDS type="Node" left="2925" top="3330" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   <PIN pinname="Color" slicecount="1" values="|1.00000,0.16881,0.00000,1.00000|" visible="1">
-   </PIN>
-   <PIN pinname="Height" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Width" slicecount="1" values="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="DynamicTexture (EX9.Texture Color)" nodename="DynamicTexture (EX9.Texture Color)" componentmode="Hidden" id="78">
-   <BOUNDS type="Node" left="3240" top="5130" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   <PIN pinname="Color" slicecount="1" visible="1" values="|0.87766,0.86986,0.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Height" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Width" slicecount="1" values="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="77" srcpinname="Texture Out" dstnodeid="17" dstpinname="Color Texture">
-   </LINK>
-   <LINK srcnodeid="78" srcpinname="Texture Out" dstnodeid="17" dstpinname="Second Color Texture">
-   </LINK>
-   <NODE systemname="IOBox (Color)" nodename="IOBox (Color)" componentmode="InABox" id="80">
-   <BOUNDS type="Node" left="4020" top="1335" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="4020" top="1335" width="810" height="1185">
-   </BOUNDS>
-   <PIN pinname="Color Output" visible="1">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="3">
-   </PIN>
-   <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
-   </PIN>
-   <PIN pinname="Color Input" slicecount="3" values="|0.00000,0.09273,1.00000,1.00000|,|0.00000,0.63325,0.99445,1.00000|,|0.89067,0.00000,0.45485,1.00000|">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="80" srcpinname="Color Output" dstnodeid="77" dstpinname="Color">
-   </LINK>
-   <NODE systemname="IOBox (Color)" nodename="IOBox (Color)" componentmode="InABox" id="81">
-   <BOUNDS type="Node" left="4320" top="4035" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="4320" top="4035" width="675" height="945">
-   </BOUNDS>
-   <PIN pinname="Color Output" visible="1">
-   </PIN>
-   <PIN pinname="Color Input" slicecount="3" values="|1.00000,0.03524,0.18988,1.00000|,|0.98518,0.66096,0.03470,1.00000|,|0.72106,0.93885,0.03303,1.00000|">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="3">
-   </PIN>
-   <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="81" srcpinname="Color Output" dstnodeid="78" dstpinname="Color">
-   </LINK>
-   <LINK srcnodeid="28" srcpinname="Y Output Value" dstnodeid="77" dstpinname="Height">
-   </LINK>
-   <LINK srcnodeid="28" srcpinname="Y Output Value" dstnodeid="78" dstpinname="Height">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="82" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Node" left="8820" top="4785" width="0" height="0">
    </BOUNDS>
@@ -693,7 +629,59 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Show Tangents|">
    </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
    </NODE>
    <LINK srcnodeid="82" srcpinname="Y Output Value" dstnodeid="37" dstpinname="Enabled">
+   </LINK>
+   <NODE systemname="DynamicTexture (EX9.Texture Color)" nodename="DynamicTexture (EX9.Texture Color)" componentmode="Hidden" id="87">
+   <BOUNDS type="Node" left="1395" top="4170" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   <PIN pinname="Color" slicecount="1" visible="1" values="|0.00000,0.00000,0.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Width" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Height" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="87" srcpinname="Texture Out" dstnodeid="17" dstpinname="Color Texture">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Y Output Value" dstnodeid="87" dstpinname="Height">
+   </LINK>
+   <NODE systemname="IOBox (Color)" nodename="IOBox (Color)" componentmode="InABox" id="88">
+   <BOUNDS type="Node" left="2490" top="2475" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2490" top="2475" width="2355" height="1275">
+   </BOUNDS>
+   <PIN pinname="Color Output" visible="1">
+   </PIN>
+   <PIN pinname="Color Input" slicecount="4" values="|0.92397,0.00000,0.27251,1.00000|,|0.00000,0.00000,0.00000,1.00000|,|0.00000,0.90358,0.01132,1.00000|,|0.00000,0.54763,0.78312,1.00000|">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="88" srcpinname="Color Output" dstnodeid="87" dstpinname="Color">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="89" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="1380" top="3465" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1380" top="3465" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Colors per line|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="89" srcpinname="Y Output Value" dstnodeid="87" dstpinname="Width">
    </LINK>
    </PATCH>
